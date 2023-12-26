@@ -1,0 +1,14 @@
+# Example appspec.yml for an EC2 deployment
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies
+      timeout: 300
+  AfterInstall:
+    - location: scripts/start_server
+      timeout: 300
+
